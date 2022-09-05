@@ -4,7 +4,8 @@
   "description": "Proyecto de backend para un blog de recetas",
   "main": "index.js",
   "scripts": {
-    "start": "babel-node index.js"
+    "start": "babel-node index.js",
+    "dev": "nodemon --exec babel-node index.js"
   },
   "keywords": [],
   "author": "Daniela Cardozo",

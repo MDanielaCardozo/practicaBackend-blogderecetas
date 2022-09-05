@@ -2,5 +2,9 @@ import express from 'express';
 
 const app = express();
 
+app.set('port', process.env.PORT || 4000);
 
-console.log('hola mundo');
+app.listen(app.get('port'), ()=>{
+    console.log(`Mi backend está en el puerto ${app.get('port')}`);
+})
+
