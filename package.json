@@ -1,0 +1,15 @@
+{
+  "name": "blogderecetas-backend",
+  "version": "1.0.0",
+  "description": "Proyecto de backend para un blog de recetas",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Daniela Cardozo",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
