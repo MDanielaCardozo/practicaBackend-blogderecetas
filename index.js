@@ -1,6 +1,8 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
+import './src/database';
+import router from './src/routes/recetas.routes';
 
 const app = express();
 
@@ -17,3 +19,4 @@ app.use(express.urlencoded({extended:true}));
 
 app.use(express.static('./public'));
 
+app.use('/apirecetas', router)
