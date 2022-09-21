@@ -1,19 +1,73 @@
-export const crearReceta = (req, res)=>{
-    res.send('crear una Receta en nuestra base de datos')
+import Receta from "../models/receta"
+
+export const crearReceta = async (req, res)=>{
+    try {
+        console.log(req.body)
+        const recetaNueva = new Receta({
+            nombreReceta: req.body.nombreReceta,
+            imagen: req.body.imagen,
+            categoria: req.body.categoria
+        });
+        await recetaNueva.save()
+        res.status(201).json({
+            mensaje: 'La receta fue creada exitosamente'
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            mensaje: 'La receta enviada no pudo ser creada'
+        })
+    }
 }
 
-export const listarRecetas = (req, res)=>{
-    res.send('enviar lista de Recetas')
+export const listarRecetas = async (req, res)=>{
+    try {
+        const listarRecetas = await Receta.find();
+        res.status(200).json(listarRecetas);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje: 'Error al buscar las recetas'
+        })
+    }
 }
 
-export const obtenerReceta = (req, res)=>{
-    res.send('Aqui envio un objeto Receta')
+export const obtenerReceta = async (req, res)=>{
+    try {
+        console.log(req.params.id);
+        const recetaBuscada = await Receta.findById(req.params.id);
+        res.status(200).json(recetaBuscada);
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje:'Error al buscar las recetas'
+        })
+    }
 }
 
-export const editarReceta = (req, res)=>{
-    res.send('editamos Receta')
+export const editarReceta = async (req, res)=>{
+    try {
+        await Receta.findByIdAndUpdate(req.params.id, req.body);
+        res.status(200).json({
+            mensaje: 'La receta fue editada correctamente'
+        })
+    } catch (error) {
+        console.log(400).json({
+            mensaje: 'Error al intentar editar la receta'
+        })
+    }
 }
 
-export const borrarReceta = (req, res)=>{
-    res.send('borramos,eliminamos Receta')
+export const borrarReceta = async (req, res)=>{
+    try {
+        await Receta.findByIdAndDelete(req.params.id);
+        res.status(200).json({
+            mensaje: 'La receta fue eliminada correctamente'
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(400).json({
+            mensaje:'Error al intentar borrar la recta'
+        })
+    }
 }
