@@ -6,13 +6,14 @@ import {
   listarRecetas,
   obtenerReceta,
 } from "../controllers/recetas.controllers";
+import validarReceta from "../helpers/validacionReceta";
 
 const router = Router();
 
 router
   .route("/recetas")
   .get(listarRecetas)
-  .post(crearReceta);
+  .post(validarReceta, crearReceta);
 
 router
   .route("/recetas/:id")

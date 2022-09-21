@@ -67,7 +67,7 @@ export const borrarReceta = async (req, res)=>{
     } catch (error) {
         console.log(error);
         res.status(400).json({
-            mensaje:'Error al intentar borrar la recta'
+            mensaje:'Error al intentar borrar la receta'
         })
     }
 }
