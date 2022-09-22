@@ -6,7 +6,9 @@ export const crearReceta = async (req, res)=>{
         const recetaNueva = new Receta({
             nombreReceta: req.body.nombreReceta,
             imagen: req.body.imagen,
-            categoria: req.body.categoria
+            categoria: req.body.categoria,
+            ingredientes: req.body.ingredientes,
+            descripcion: req.body.descripcion
         });
         await recetaNueva.save()
         res.status(201).json({
