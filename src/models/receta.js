@@ -16,6 +16,16 @@ const recetaSchema = new Schema({
         type: String,
         require: true,
         maxlength: 40
+    },
+    ingredientes: {
+        type: String,
+        require: true,
+        maxlength: 190
+    },
+    descripcion: {
+        type: String,
+        require: true,
+        maxlength: 1000
     }
 });
 
